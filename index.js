@@ -4,7 +4,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 
 const config = require("config");
-require("debug")("app:startup");
+const debug = require("debug")("app:startup");
 
 const Joi = require("joi");
 const express = require("express");
@@ -27,8 +27,11 @@ console.log("Mail Password: " + config.get("mail.password"));
 
 if (app.get("env") === "development") {
   app.use(morgan("tiny"));
-  console.log("Morgan enabled...");
+  debug("Morgan enabled...");
 }
+
+// dbDebugger
+debug("Connected to the db ...");
 
 app.use(logger);
 
