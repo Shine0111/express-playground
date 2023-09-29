@@ -10,6 +10,10 @@ const Joi = require("joi");
 const express = require("express");
 const app = express();
 
+// express will load the engine, no need to require
+app.set("view engine", "pug");
+app.set("views", "./views"); //default
+
 // Middlewares
 app.use(express.json());
 app.use(
